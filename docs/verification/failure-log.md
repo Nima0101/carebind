@@ -24,3 +24,8 @@
   TestPerEventWireLimit failed before the fix. Parse now checks raw event length
   before normalization. This is a production fix: fuzz, race, clean clone and
   release evidence are rerun; earlier green does not transfer to changed bytes.
+- The end-to-end oversized-event regression then found the receiver could erase
+  excessive wire whitespace during JSON normalization. The native parser rejected
+  it but the receiver initially exited 0. The receiver now validates an immutable
+  copy of the original bytes before decoding/adapting. Actual process regressions
+  reject oversized, duplicate-field, mis-cased and overly nested wire input.

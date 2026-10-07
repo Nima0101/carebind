@@ -46,12 +46,29 @@ def receive(binary, bundle, policy, slot):
             "origin_binding": report["binding"], "evidence": report}
 
 
+def receive_wire(binary, data, policy, slot):
+    """Validate original wire bytes before a JSON loader can normalize them."""
+    if len(data) > 1048576:
+        raise ValueError("input_limit")
+    with tempfile.TemporaryDirectory() as directory:
+        path = Path(directory) / "original.json"
+        path.write_bytes(data)
+        validation = subprocess.run(
+            [binary, "evaluate", str(path), str(policy)], capture_output=True, text=True
+        )
+        if validation.returncode != 0:
+            raise ValueError("invalid_wire_evidence")
+    return receive(binary, strict_json(data), policy, slot)
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 5:
         raise SystemExit("usage: receive.py BINARY BUNDLE LOCAL_POLICY SLOT")
-    source = Path(sys.argv[2])
-    with source.open("rb") as stream:
-        data = stream.read(1048577)
-    if len(data) > 1048576:
-        raise SystemExit("input_limit")
-    print(json.dumps(receive(sys.argv[1], strict_json(data), sys.argv[3], int(sys.argv[4]))))
+    try:
+        with Path(sys.argv[2]).open("rb") as stream:
+            data = stream.read(1048577)
+        report = receive_wire(sys.argv[1], data, sys.argv[3], int(sys.argv[4]))
+        print(json.dumps(report))
+    except (ValueError, OSError, subprocess.CalledProcessError):
+        print("receiver_input_invalid", file=sys.stderr)
+        raise SystemExit(2)
