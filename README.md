@@ -1,5 +1,7 @@
 <p align="left"><img src="docs/assets/mark.svg" width="520" alt="CareBind — preserve the origin"></p>
 
+[![CI](https://github.com/Nima0101/carebind/actions/workflows/ci.yml/badge.svg)](https://github.com/Nima0101/carebind/actions/workflows/ci.yml)
+
 **The channel changes. The original association does not.**
 
 CareBind preserves the source context of delayed observations when a device channel
@@ -10,7 +12,7 @@ A small Go library and offline CLI for integration engineers, with signed eviden
 explicit local trust, and a reproducible synthetic conformance demo. No server,
 model API, clinical payload or global identity registry is required.
 
-**Unreleased technical candidate.** Physical identity is always **unverified**;
+**Bounded technical runtime.** Physical identity is always **unverified**;
 global freshness is always **unknown**. This is not clinical decision software.
 See the [gate status](docs/verification/status.md) before relying on any release claim.
 
@@ -107,9 +109,10 @@ reference interpretation, real process adapters and clean-clone use. A same-auth
 reference is not an independent human audit. Synthetic tests establish neither
 clinical benefit nor readiness for deployment in care.
 
-Local platform: macOS arm64. Linux/macOS hosted checks are configured; supported
-platform and production-readiness claims require completed evidence listed in the
-[verification status](docs/verification/status.md). Windows is not claimed.
+Linux and macOS hosted verification has [passed](https://github.com/Nima0101/carebind/actions/runs/37701720986).
+The [verification status](docs/verification/status.md) separates local, hosted and
+release evidence. Windows is not claimed. Release packages include Linux binaries;
+macOS users build from source with the quickstart above.
 
 [Public API](docs/api.md) · [Threat model](docs/threat-model/README.md) ·
 [Release process](docs/releasing.md) · [AI-assisted engineering](docs/engineering/ai-assisted-engineering.md) ·

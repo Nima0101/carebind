@@ -1,6 +1,6 @@
 # Evidence status — 2026-10-08
 
-State: P7 publication candidate. V01–V15 passed locally. V16–V17 remain pending;
+State: P8 public verified. V01–V16 passed. V17 remains pending;
 **not production-ready**. No clinical deployment or physical identity claim.
 
 [Machine-readable local evidence](local-evidence.json) binds the tested source
@@ -25,7 +25,7 @@ publication; file contents and constitution-before-source ordering are preserved
 | V13 | Two byte-identical builds, packaged demo, SHA-256, SPDX 2.3 validated against upstream schema, source archive/local provenance |
 | V14 | Original SVG mark, accurate architecture, captured real stdout and terminal replay; visual inspected and source/output hashes checked |
 | V15 | OSS documents/templates; pinned CI, CodeQL and attestation/release workflows validated by actionlint v1.7.12 |
-| V16 | Pending: actual hosted Linux/macOS CI and CodeQL, anonymous public clone, remote presentation |
+| V16 | Passed: [hosted Linux/macOS CI and CodeQL](https://github.com/Nima0101/carebind/actions/runs/37701720986); no open CodeQL alerts; anonymous clone quickstart/verification; actual public HTML and image verified |
 | V17 | Pending: verified tag, hosted provenance, downloaded and verified public release assets |
 
 Local platform: Go 1.27.1 darwin/arm64; Python 3.9.6 for main checks and 3.13 for
@@ -36,3 +36,8 @@ regressions; no gate was relaxed and no mandatory tests were skipped.
 
 No clinical benefit, safety certification, adoption, physical trial, independent
 human audit or real medical-device integration is established by this evidence.
+
+Public repository: https://github.com/Nima0101/carebind. Private vulnerability
+reporting is enabled. The initial public commit b05d55c passed all hosted jobs.
+The release tag will require successful CI on its exact revision; documentation
+updates do not bypass that gate. No release tag exists at this status checkpoint.
