@@ -13,3 +13,5 @@
 - Adapter review found Python's default JSON loader could collapse duplicate keys
   before the strict Go parser saw the wire input. Added duplicate-key rejection at
   the receiver boundary and a regression; preserved the core parser's strict gate.
+- Release-workflow review added explicit Actions read permission for its hosted-CI
+  lookup. Without it, an otherwise authorized release job could not verify the gate.
