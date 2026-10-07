@@ -1,0 +1,54 @@
+CareBind | The channel changes. The origin does not.
+SYNTHETIC ONLY | global freshness: unknown | physical identity: unverified
+
+source-capture
+  evidence-consistent-within-known-scope | origin=Cedar | accepted=2 duplicates=0
+  Cedar source context captured before delivery
+
+delayed-after-reassignment
+  superseded-in-known-history | origin=Cedar | accepted=3 duplicates=0
+  Naive current roster says Birch; origin remains Cedar
+
+cross-site-link
+  superseded-in-known-history | origin=Cedar | accepted=4 duplicates=0
+  Explicit receiving handle slot-42; no global merge
+
+offline-reconnection
+  conflicting | origin=Cedar | accepted=4 duplicates=0
+  Partition histories union exposes Birch / Maple fork
+
+unknown-issuer
+  evidence-invalid | origin= | accepted=0 duplicates=0
+  Unaccepted issuer gives no accepted association
+
+tampered-envelope
+  evidence-invalid | origin= | accepted=1 duplicates=0
+  Payload digest modified after signing
+
+replay-duplicate
+  evidence-consistent-within-known-scope | origin=Cedar | accepted=2 duplicates=2
+  Duplicate count 2; accepted evidence count stays 2
+
+stale-policy
+  unknown-stale | origin=Cedar | accepted=2 duplicates=0
+  Offline policy age is explicit; global freshness unknown
+
+stripped-context
+  unbound | origin= | accepted=1 duplicates=0
+  Missing binding cannot be replaced by a current roster
+
+substituted-destination
+  conflicting | origin=Cedar | accepted=2 duplicates=0
+  Consumer context differs from signed origin
+
+revoked-key
+  evidence-invalid | origin= | accepted=0 duplicates=0
+  Local revocation invalidates historical uses too
+
+synthetic-item
+  evidence-consistent-within-known-scope | origin=Cedar | accepted=2 duplicates=0
+  Opaque synthetic item association; no specimen interpretation
+
+wrong-physical-tag
+  evidence-consistent-within-known-scope | origin=Cedar | accepted=2 duplicates=0
+  MODEL: Cedar tag attached to Birch prop; software CANNOT detect it

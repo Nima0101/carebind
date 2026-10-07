@@ -1,0 +1,6 @@
+CareBind
+Copyright 2026 Nima Khaki
+
+Synthetic association-evidence runtime. No clinical identity or care decisions.
+Binary distributions include the Go standard library/runtime under its BSD license.
+See docs/licenses/GO-LICENSE and docs/third-party-licenses.md.

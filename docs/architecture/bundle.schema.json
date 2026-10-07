@@ -1,0 +1,379 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "v",
+    "events",
+    "policy",
+    "query"
+  ],
+  "properties": {
+    "v": {
+      "const": 1
+    },
+    "events": {
+      "type": "array",
+      "maxItems": 512,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event",
+          "signature"
+        ],
+        "properties": {
+          "event": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "v",
+              "kind",
+              "issuer",
+              "key",
+              "nonce",
+              "scope",
+              "channel",
+              "generation",
+              "subject",
+              "previous",
+              "binding",
+              "payload",
+              "target_scope",
+              "target",
+              "issued"
+            ],
+            "properties": {
+              "v": {
+                "const": 1
+              },
+              "kind": {
+                "enum": [
+                  "binding",
+                  "observation",
+                  "link"
+                ]
+              },
+              "issuer": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+              },
+              "key": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+              },
+              "nonce": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+              },
+              "scope": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+              },
+              "channel": {
+                "type": "string"
+              },
+              "generation": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2147483647
+              },
+              "subject": {
+                "type": "string"
+              },
+              "previous": {
+                "type": "string"
+              },
+              "binding": {
+                "type": "string"
+              },
+              "payload": {
+                "type": "string"
+              },
+              "target_scope": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "issued": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4102444800
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "kind": {
+                      "const": "binding"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "channel": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+                    },
+                    "generation": {
+                      "minimum": 1
+                    },
+                    "subject": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+                        },
+                        {
+                          "const": ""
+                        }
+                      ]
+                    },
+                    "previous": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        {
+                          "const": ""
+                        }
+                      ]
+                    },
+                    "binding": {
+                      "const": ""
+                    },
+                    "payload": {
+                      "const": ""
+                    },
+                    "target_scope": {
+                      "const": ""
+                    },
+                    "target": {
+                      "const": ""
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "kind": {
+                      "const": "observation"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "channel": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+                    },
+                    "generation": {
+                      "minimum": 1
+                    },
+                    "subject": {
+                      "const": ""
+                    },
+                    "previous": {
+                      "const": ""
+                    },
+                    "binding": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "payload": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "target_scope": {
+                      "const": ""
+                    },
+                    "target": {
+                      "const": ""
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "kind": {
+                      "const": "link"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "channel": {
+                      "const": ""
+                    },
+                    "generation": {
+                      "const": 0
+                    },
+                    "subject": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+                    },
+                    "previous": {
+                      "const": ""
+                    },
+                    "binding": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "payload": {
+                      "const": ""
+                    },
+                    "target_scope": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+                    },
+                    "target": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "signature": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{128}$"
+          }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "as_of",
+        "known_at",
+        "max_age",
+        "keys"
+      ],
+      "properties": {
+        "as_of": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4102444800
+        },
+        "known_at": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4102444800
+        },
+        "max_age": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400
+        },
+        "keys": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "issuer",
+              "key",
+              "public",
+              "scope",
+              "roles",
+              "not_before",
+              "not_after",
+              "revoked"
+            ],
+            "properties": {
+              "issuer": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+              },
+              "key": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+              },
+              "public": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "scope": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+              },
+              "roles": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 3,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "binding",
+                    "observation",
+                    "link"
+                  ]
+                }
+              },
+              "not_before": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4102444800
+              },
+              "not_after": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4102444800
+              },
+              "revoked": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observation",
+        "target_scope",
+        "target"
+      ],
+      "properties": {
+        "observation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "target_scope": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "target": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.:-]{1,64}$"
+            },
+            {
+              "const": ""
+            }
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CareBind wire v1 structural schema",
+  "description": "Additional semantic, byte, depth, duplicate-field and canonical-signing requirements are normative in protocol.md and parser."
+}

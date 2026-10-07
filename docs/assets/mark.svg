@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="150" viewBox="0 0 650 150" role="img" aria-labelledby="title desc">
+<title id="title">CareBind</title><desc id="desc">Two separate origin paths retain their endpoints within an open bracket.</desc>
+<rect width="650" height="150" rx="18" fill="#0c1823"/>
+<g fill="none" stroke-width="6" stroke-linecap="round"><path d="M43 42H30v66h13M111 42h13v66h-13" stroke="#9ab5c6"/><path d="M51 54h28q23 0 23 21v20M51 96h19q15 0 15-16" stroke="#87e3d3"/></g>
+<circle cx="51" cy="54" r="6" fill="#87e3d3"/><circle cx="51" cy="96" r="6" fill="#ffc477"/>
+<text x="153" y="88" fill="#edf3f7" font-family="system-ui,sans-serif" font-size="52" font-weight="650" letter-spacing="-2">CareBind</text>
+<text x="156" y="116" fill="#9ab5c6" font-family="system-ui,sans-serif" font-size="15" letter-spacing="2">PRESERVE THE ORIGIN</text>
+</svg>

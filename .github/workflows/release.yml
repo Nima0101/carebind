@@ -1,0 +1,44 @@
+name: Release evidence
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag on a CI-verified commit
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ inputs.tag }}
+          fetch-depth: 0
+      - name: Require exact version and successful hosted CI
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test "$RELEASE_TAG" = v0.1.0
+          test "$(git rev-parse HEAD)" = "$(git rev-parse "$RELEASE_TAG^{commit}")"
+          gh run list --workflow ci.yml --commit "$(git rev-parse HEAD)" --status success --json conclusion --jq 'length > 0' | grep -qx true
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
+        with:
+          go-version: '1.27.1'
+          cache: false
+      - run: python3 scripts/verify.py
+      - run: python3 scripts/reproduce.py
+      - uses: actions/attest-build-provenance@96b4a1ef7235a096b17240c259729fdd70c83d45
+        with:
+          subject-path: dist/*
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: carebind-release-evidence
+          path: dist/
+          if-no-files-found: error
