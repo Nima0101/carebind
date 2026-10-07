@@ -1,0 +1,6 @@
+.mission/
+.DS_Store
+/bin/
+/dist/
+/coverage.out
+__pycache__/

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "date": "2026-10-08",
+  "before_production_source": true,
+  "sha256": {
+    "AGENTS.md": "a1c751741937201fdebe77e3cb45491198396265234ae8b71d90a59e7db4ea0d",
+    "CODE_OF_CONDUCT.md": "3af4834e4fcf96483393b17cc45eca0310341798b97b277c905eac33e8764e3a",
+    "CONTRIBUTING.md": "34507b3a17242d1c834639fd2778317223dedc55c220c35112e931637bb9212b",
+    "GOVERNANCE.md": "abd1a7d4ff5c30bff1049f10b09c98788e16e8843e52527ca280c987dbb25ef3",
+    "ROADMAP.md": "6272f13527cca53b39053de5896a694eb877809aae0f270e452f88182aa918f7",
+    "SECURITY.md": "a675f61cf76d61dbe15fbe6e656b9278c4547123412dbf55540d14cfb337d092",
+    "docs/engineering/ai-assisted-engineering.md": "adeb0b46cbb9db05dcfc466ccec703db13dd42e2b7991b4d723650861ab770f6",
+    "docs/engineering/constitution.md": "be1465be95b24a0d8f7f6c0129e9987afdfd66fc5c0b0359cda1a89ba2a37140",
+    "docs/engineering/definition-of-done.md": "d5963f0aad399f24a3acf1c867ab2f067ce6fdfdda5c18f8efe0b42ca35904da",
+    "docs/engineering/phase-model.md": "e2fa8473ac8ebfb8b0ba4128871d08853d8a74362b5bc896215ffd992acfadaa",
+    "docs/verification/claim-evidence-policy.md": "5cd6739c3ba6dabb367a108af456f60b13d5a2a079f464e7197234123e2fed3b",
+    "docs/verification/publication-gate.md": "d2d34b0c33cc1cc1efced2e28fc3b85b6f5203c1949e98f22b8ff2af7d1945a9",
+    "docs/verification/verification-matrix.md": "cd3cdacb242cef3f82a67c968e8412df1120f7a55009bee59de20471a1f8f0a7"
+  }
+}
