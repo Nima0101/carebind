@@ -19,3 +19,8 @@
   final source-stability check. A concurrent source change must invalidate a build,
   not yield a provenance record for mixed revisions. Reproduction is rerun only
   after source changes are committed.
+- Final parser audit found the aggregate input cap did not enforce the frozen
+  4,096-byte per-event wire cap when an event contained excess whitespace.
+  TestPerEventWireLimit failed before the fix. Parse now checks raw event length
+  before normalization. This is a production fix: fuzz, race, clean clone and
+  release evidence are rerun; earlier green does not transfer to changed bytes.

@@ -1,17 +1,17 @@
 {
   "command": "bin/carebind demo",
   "exit_code": 0,
-  "binary_sha256": "50745511527ca1c45099d7cd2336e2ea86e95dca71e66bfc14225707c7b56b34",
+  "binary_sha256": "4d2748ec6c8241c54ac5ed42de4b075653532fadaef3b910f73ec0fdd5356dbe",
   "stdout_sha256": "032787329cafa3dff9000ac8b53da2465dbb15ae6d4e5ae62747855b69bd5eb5",
   "capture": "actual process stdout, timestamped in demo.cast",
   "rendering": "Pillow 11.3.0 terminal replay, 3.5 seconds per case; not a desktop screenshot or physical trial",
   "source_sha256": {
     "cmd/carebind/main.go": "da2e8c051f5c01c1f81581d7c21fce1dee2868752c4bb1cb935fdcb6342fd14f",
-    "core_test.go": "ff1e6570fcc617d70a357123ff36c39f49b49cbe4720d33fd2ea0ef7d055c42e",
+    "core_test.go": "43eec3ec38936279c3ff5261f361ec20bb3893d7b9126ba1de72d1a47cd59f1c",
     "evaluate.go": "851f6047b6b73785c616e52465cad3b33a27581c004e0e85f7bd0ec26869036e",
     "examples/consumer_test.go": "57c9eb6b32fc277d20d8cba8e473ece528e2cc3f629e78cc60626da9c501baea",
     "internal/demo/demo.go": "dd2e7a40676148013bf6e7e2293affbfc6fca77b5949bc0552f566fe1cb1f0cb",
-    "parse.go": "a040cff5a10c1bffd0f7e53a45761fe96c1622ed7b18413376d8e6835667cedf",
+    "parse.go": "405aac8c3f0fb8596452e8b68c449a657e4d95cb62511bc5e81298b689a2e68d",
     "types.go": "fb6deba5c600b6b9bfdd5c39f942bb0f0cd9bc55ced7073984cabb4c0e9d98b5"
   }
 }

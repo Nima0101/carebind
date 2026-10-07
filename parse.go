@@ -132,6 +132,21 @@ func Parse(data []byte) (Bundle, error) {
 	if err := StrictDecode(data, &b); err != nil {
 		return b, err
 	}
+	// Bound each event's actual wire representation, including padding, before
+	// normalization erases its size. The whole input was already strictly decoded.
+	var wire struct {
+		Events []struct {
+			Event json.RawMessage `json:"event"`
+		} `json:"events"`
+	}
+	if err := json.Unmarshal(data, &wire); err != nil {
+		return b, fail("json_syntax")
+	}
+	for _, envelope := range wire.Events {
+		if len(envelope.Event) > 4096 {
+			return b, fail("event_byte_limit")
+		}
+	}
 	return b, validate(b)
 }
 func validate(b Bundle) error {

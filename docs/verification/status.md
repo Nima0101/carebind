@@ -1,6 +1,6 @@
 # Evidence status — 2026-10-08
 
-State: P5 adversarially verified; clean-clone and release gates are in progress.
+State: parser-size correction committed; affected gates are being rerun.
 Not production-ready. No public repository or release has been published yet.
 
 | Gates | Evidence / current state |
@@ -12,8 +12,8 @@ Not production-ready. No public repository or release has been published yet.
 | V07–V09 | Passed locally: real Go/Python process adapters; offline states; explicit wrong-tag software blind spot |
 | V10 | Passed: 60-second native fuzz, 240,089 executions, no crash; finite exploration only |
 | V11 | Passed locally: go vet, race, govulncheck v1.8.0 (no vulnerabilities), public-content scan; no independent audit |
-| V12 | Pending clean committed clone and separate consumer module |
-| V13 | Pending deterministic packaged release verification |
+| V12 | Passed at 1d1a337: clean clone, README verbatim, isolated caches and external consumer; rerun after parser correction |
+| V13 | Passed at 66545f2: byte-identical packages and extracted demo; upstream SPDX schema validates; rerun after parser correction |
 | V14 | Actual CLI stdout/cast/PNG/GIF and original SVG mark; recording provenance retained; visual inspected |
 | V15 | OSS documents, templates, pinned CI/CodeQL/release workflows present; hosted execution pending |
 | V16–V17 | Pending publication, hosted checks, anonymous clone, tagged attested release |

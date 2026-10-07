@@ -47,5 +47,12 @@ assert not subprocess.check_output(["gofmt", "-l", *go_files], cwd=ROOT).strip()
 run("go", "build", "-trimpath", "-o", "bin/carebind", "./cmd/carebind")
 run("python3", "scripts/integration.py")
 run("python3", "scripts/conformance.py")
+recording = json.loads((ROOT / "docs/assets/recording.json").read_text())
+for name, digest in recording["source_sha256"].items():
+    assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, (name, "stale recording")
+stdout = subprocess.check_output([str(ROOT / "bin/carebind"), "demo"], cwd=ROOT)
+assert hashlib.sha256(stdout).hexdigest() == recording["stdout_sha256"], "recording output mismatch"
+assert stdout == (ROOT / "docs/assets/demo.txt").read_bytes(), "transcript mismatch"
+print("PASS: demo recording source and stdout provenance")
 run("bin/carebind", "demo")
 print("PASS: fast verification; race, 60s fuzz, vulnerability audit and clean release remain separate gates")

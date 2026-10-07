@@ -447,3 +447,19 @@ func TestWrongTagIsUndetectable(t *testing.T) {
 		t.Fatal("invented physical assurance")
 	}
 }
+
+func TestPerEventWireLimit(t *testing.T) {
+	base := demo.Base()
+	raw, _ := json.Marshal(base)
+	event, _ := json.Marshal(base.Events[0].Event)
+	for _, size := range []int{4096, 4097} {
+		padded := bytes.Replace(raw, []byte(`"event":{`), []byte(`"event":{`+strings.Repeat(" ", size-len(event))), 1)
+		_, err := cb.Parse(padded)
+		if size == 4096 && err != nil {
+			t.Fatal("boundary rejected", err)
+		}
+		if size == 4097 && err == nil {
+			t.Fatal("event over frozen 4096-byte wire limit accepted")
+		}
+	}
+}
