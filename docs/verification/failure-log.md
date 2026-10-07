@@ -15,3 +15,7 @@
   the receiver boundary and a regression; preserved the core parser's strict gate.
 - Release-workflow review added explicit Actions read permission for its hosted-CI
   lookup. Without it, an otherwise authorized release job could not verify the gate.
+- Release review bound the source archive to the captured revision and added a
+  final source-stability check. A concurrent source change must invalidate a build,
+  not yield a provenance record for mixed revisions. Reproduction is rerun only
+  after source changes are committed.

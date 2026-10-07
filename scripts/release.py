@@ -44,7 +44,7 @@ archive("carebind-0.1.0-" + goos + "-" + goarch + ".tar.gz", [
     ("GO-LICENSE", (ROOT / "docs/licenses/GO-LICENSE").read_bytes(), 0o644),
     ("README.md", (ROOT / "README.md").read_bytes(), 0o644),
 ])
-source = subprocess.check_output(["git", "archive", "--format=tar", "HEAD"])
+source = subprocess.check_output(["git", "archive", "--format=tar", revision])
 (out / "carebind-0.1.0-source.tar.gz").write_bytes(gzip.compress(source, mtime=0))
 creation = {"creators": ["Tool: carebind-release-v1"], "created": "2026-10-08T00:00:00Z"}
 sbom = {"spdxVersion": "SPDX-2.3", "dataLicense": "CC0-1.0", "SPDXID": "SPDXRef-DOCUMENT",
@@ -70,4 +70,6 @@ provenance = {"source_revision": revision, "toolchain": go_version,
 (out / "provenance.json").write_text(json.dumps(provenance, sort_keys=True, indent=2) + "\n")
 (out / "SHA256SUMS").write_text("".join(digest(p.read_bytes()) + "  " + p.name + "\n"
                                        for p in sorted(out.iterdir()) if p.name != "SHA256SUMS"))
+if subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip() != revision or subprocess.check_output(["git", "status", "--porcelain"]).strip():
+    raise SystemExit("source changed during release; discard candidate artifacts")
 print("Built deterministic candidate at source " + revision)
