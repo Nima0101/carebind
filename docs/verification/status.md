@@ -1,7 +1,9 @@
 # Evidence status — 2026-10-08
 
-State: P8 public verified. V01–V16 passed. V17 remains pending;
-**not production-ready**. No clinical deployment or physical identity claim.
+State: P9 — all frozen V01–V17 gates passed for the **bounded technical runtime
+v0.1.0**, source `9a0439f5efbcea15d60fbfd17ffc8e4ec49b1b0b`. This establishes the
+project's defined technical production-readiness gate, **not clinical deployment
+readiness**, physical identity, or globally current truth.
 
 [Machine-readable local evidence](local-evidence.json) binds the tested source
 content and commands. Final publication checks rerun on the committed candidate.
@@ -26,18 +28,20 @@ publication; file contents and constitution-before-source ordering are preserved
 | V14 | Original SVG mark, accurate architecture, captured real stdout and terminal replay; visual inspected and source/output hashes checked |
 | V15 | OSS documents/templates; pinned CI, CodeQL and attestation/release workflows validated by actionlint v1.7.12 |
 | V16 | Passed: [hosted Linux/macOS CI and CodeQL](https://github.com/Nima0101/carebind/actions/runs/37701720986); no open CodeQL alerts; anonymous clone quickstart/verification; actual public HTML and image verified |
-| V17 | Pending: verified tag, hosted provenance, downloaded and verified public release assets |
+| V17 | Passed: [v0.1.0 release](https://github.com/Nima0101/carebind/releases/tag/v0.1.0), [tagged hosted build](https://github.com/Nima0101/carebind/actions/runs/37702792138), all six attestations verified, anonymous downloads match, source archive and public Go module consumer pass |
 
 Local platform: Go 1.27.1 darwin/arm64; Python 3.9.6 for main checks and 3.13 for
 release/visual tooling; OpenSSL 3.6.4. No Windows support claim. Hosted platform
-support requires the actual remote results. Local unsigned provenance is not a
-hosted attestation. The [failure log](failure-log.md) records defects and retained
+support requires the actual remote results. Local unsigned provenance is distinguished from the separately verified
+hosted attestations. The [failure log](failure-log.md) records defects and retained
 regressions; no gate was relaxed and no mandatory tests were skipped.
 
 No clinical benefit, safety certification, adoption, physical trial, independent
 human audit or real medical-device integration is established by this evidence.
 
 Public repository: https://github.com/Nima0101/carebind. Private vulnerability
-reporting is enabled. The initial public commit b05d55c passed all hosted jobs.
-The release tag will require successful CI on its exact revision; documentation
-updates do not bypass that gate. No release tag exists at this status checkpoint.
+reporting is enabled. The initial public commit b05d55c passed all hosted jobs. The exact tagged source
+also passed [Linux/macOS CI and CodeQL](https://github.com/Nima0101/carebind/actions/runs/37702163803)
+before tagging. [Machine-readable release evidence](release-evidence.json) records
+asset hashes, attestation policy and public-consumer checks. This status update is
+a documentation-only follow-up; it does not move or overwrite the release tag.

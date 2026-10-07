@@ -18,7 +18,7 @@ See the [gate status](docs/verification/status.md) before relying on any release
 
 ![Real CLI output: Cedar's delayed observation retains its origin](docs/assets/demo.png)
 
-[Quickstart](#quickstart) · [Architecture](docs/architecture/README.md) ·
+[Release 0.1.0](https://github.com/Nima0101/carebind/releases/tag/v0.1.0) · [Quickstart](#quickstart) · [Architecture](docs/architecture/README.md) ·
 [Protocol](docs/architecture/protocol.md) · [Security](SECURITY.md) ·
 [Verification](docs/verification/README.md) · [Contributing](CONTRIBUTING.md)
 
@@ -26,7 +26,11 @@ See the [gate status](docs/verification/status.md) before relying on any release
 
 Requires Go **1.27.1**, Git, Python **3.9+**, and OpenSSL **3+** for the independent
 conformance check. The runtime has no third-party Go module dependencies.
-From the repository root:
+Binary users can download the [Linux archive and checksums](https://github.com/Nima0101/carebind/releases/tag/v0.1.0),
+verify `SHA256SUMS`, unpack, and run `./carebind demo`. Source archives support
+build/demo commands; the full engineering checks require a Git clone.
+
+From the cloned repository root:
 
 ```sh
 go build -trimpath -o bin/carebind ./cmd/carebind

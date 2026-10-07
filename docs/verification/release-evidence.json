@@ -1,0 +1,54 @@
+{
+  "release": "v0.1.0",
+  "source_revision": "9a0439f5efbcea15d60fbfd17ffc8e4ec49b1b0b",
+  "release_url": "https://github.com/Nima0101/carebind/releases/tag/v0.1.0",
+  "ci_url": "https://github.com/Nima0101/carebind/actions/runs/37702163803",
+  "release_workflow_url": "https://github.com/Nima0101/carebind/actions/runs/37702792138",
+  "platforms": [
+    "linux/amd64",
+    "darwin/arm64"
+  ],
+  "prebuilt_binary_platform": "linux/amd64",
+  "attestation_policy": {
+    "repository": "Nima0101/carebind",
+    "signer_workflow": "Nima0101/carebind/.github/workflows/release.yml",
+    "source_ref": "refs/tags/v0.1.0",
+    "source_digest": "9a0439f5efbcea15d60fbfd17ffc8e4ec49b1b0b"
+  },
+  "checks": {
+    "six_artifact_attestations": "passed",
+    "sha256_manifest": "passed",
+    "spdx_2_3_schema": "passed",
+    "anonymous_release_downloads": "passed; byte-identical to attested assets",
+    "source_archive_build_and_demo": "passed on macOS arm64",
+    "public_go_module_consumer": "passed with sum.golang.org enabled and no local replacement",
+    "anonymous_public_clone": "README and verification passed",
+    "codeql_open_alerts": 0
+  },
+  "artifacts": {
+    "carebind": {
+      "url": "https://github.com/Nima0101/carebind/releases/download/v0.1.0/carebind",
+      "sha256": "12d537be03b96639365a9c3fd14986e0fba24500c976107e072db1768f52d771"
+    },
+    "carebind-0.1.0-linux-amd64.tar.gz": {
+      "url": "https://github.com/Nima0101/carebind/releases/download/v0.1.0/carebind-0.1.0-linux-amd64.tar.gz",
+      "sha256": "e341ff210d02aca341a9506284c40c66baffa88272d3ecf20f1971ea65a874b4"
+    },
+    "carebind-0.1.0-source.tar.gz": {
+      "url": "https://github.com/Nima0101/carebind/releases/download/v0.1.0/carebind-0.1.0-source.tar.gz",
+      "sha256": "0877e215e14364d57e49938560b4f3cb2d84c3c1a92e0555950924cd15588e9a"
+    },
+    "provenance.json": {
+      "url": "https://github.com/Nima0101/carebind/releases/download/v0.1.0/provenance.json",
+      "sha256": "35207f720ee4685c17698950eff079a071d69de7312c6ff19f90dbc1011a7ae8"
+    },
+    "sbom.spdx.json": {
+      "url": "https://github.com/Nima0101/carebind/releases/download/v0.1.0/sbom.spdx.json",
+      "sha256": "b911facf08f17e016401e2883b0b6b8e4520139371f32c52a5e0d27cf8b055da"
+    },
+    "SHA256SUMS": {
+      "url": "https://github.com/Nima0101/carebind/releases/download/v0.1.0/SHA256SUMS",
+      "sha256": "96f10a071587de360ceb46b11373f9f4042b47edabc66d67432d24c03b3cf9a0"
+    }
+  }
+}

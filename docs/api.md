@@ -1,6 +1,7 @@
 # Library and CLI
-Import `github.com/Nima0101/carebind` using a pinned source revision or local module
-replacement. `Parse([]byte)` validates bounded JSON into Bundle; `Evaluate(Bundle)`
+Import `github.com/Nima0101/carebind` with `go get github.com/Nima0101/carebind@v0.1.0`,
+a pinned source revision, or a local module replacement. The public tagged module
+consumer path has been tested with checksum-database verification enabled. `Parse([]byte)` validates bounded JSON into Bundle; `Evaluate(Bundle)`
 revalidates typed input and returns a Result or typed `*Error`. Supply your own
 trusted Policy before evaluation. `Sign(Event, ed25519.PrivateKey)` creates an
 envelope. Generate operational keys externally with OS randomness; no CLI key

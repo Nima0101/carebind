@@ -29,3 +29,8 @@
   it but the receiver initially exited 0. The receiver now validates an immutable
   copy of the original bytes before decoding/adapting. Actual process regressions
   reject oversized, duplicate-field, mis-cased and overly nested wire input.
+- Public-module verification initially used the machine's default GOPATH for the
+  checksum database cache, outside this session's writable paths. Retried with an
+  isolated temporary GOPATH; sum.golang.org verification remained enabled and the
+  real versioned consumer passed. GitHub log retrieval similarly used an isolated
+  XDG cache after its default cache write was denied. No security check was disabled.
